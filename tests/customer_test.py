@@ -3,6 +3,7 @@ import unittest
 from src.pub import Pub
 from src.drink import Drink
 from src.customer import Customer
+from src.food import Food
 
 class TestCustomer(unittest.TestCase):
     
@@ -32,3 +33,7 @@ class TestCustomer(unittest.TestCase):
         self.assertEqual(5.00, self.customer.drunkeness)
         self.assertEqual(3, len(self.customer.stomach))
 
+    def test_eat_food(self):
+        self.food = Food("Crisps", 1.00, 0.5)
+        self.customer.eat_food(self.food)
+        self.assertEqual(3.5, self.customer.drunkeness)

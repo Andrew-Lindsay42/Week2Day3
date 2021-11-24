@@ -18,3 +18,6 @@ class Customer:
     def down_drink(self, drink):
         self.drunkeness += drink.units
         self.stomach.append(drink)
+
+    def eat_food(self, food):
+        self.drunkeness -= food.sober_effect

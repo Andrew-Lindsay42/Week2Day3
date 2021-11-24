@@ -38,7 +38,7 @@ class Pub:
 
         if drink is not None:
             if customer.can_afford(drink) and customer.get_drunkeness() < 8:
-                if self.get_id (customer):
+                if self.get_id(customer):
                     customer.down_drink(drink)
                     customer.wallet -= drink.price
                     self.till += drink.price
@@ -49,7 +49,10 @@ class Pub:
                     self.till += drink.price
                     self.drinks.remove(drink)
         
-    def sell_food(self, customer, food):
-        customer.wallet -= food.price
-        customer.drunkeness -= food.sober_effect
-        self.till += food.price
+    def sell_food(self, customer, food_name):
+        food = self.find_food_by_name(food_name)
+
+        if food is not None:
+            customer.eat_food(food)
+            customer.wallet -= food.price
+            self.till += food.price
