@@ -40,5 +40,5 @@ class Pub:
         
     def sell_food(self, customer, food):
         customer.wallet -= food.price
-        customer.drunkeness -= food.rejuvenation_level
+        customer.drunkeness -= food.sober_effect
         self.till += food.price

@@ -12,6 +12,6 @@ class TestFood(unittest.TestCase):
     def test_food_has_price(self):
         self.assertEqual(1.00, self.food.price)
 
-    def test_food_has_rejuvenation_level(self):
-        self.assertEqual(0.5, self.food.rejuvenation_level) 
+    def test_food_has_sober_effect(self):
+        self.assertEqual(0.5, self.food.sober_effect) 
     

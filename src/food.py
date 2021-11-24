@@ -1,6 +1,5 @@
 class Food:
-    def __init__(self, name, price, rejuvenation_level):
+    def __init__(self, name, price, sober_effect):
         self.name = name
         self.price = price
-        self.rejuvenation_level = rejuvenation_level
-        
+        self.sober_effect = sober_effect

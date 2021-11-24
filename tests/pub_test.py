@@ -36,10 +36,12 @@ class TestPub(unittest.TestCase):
         self.assertEqual(2, len(self.pub.drinks))
         self.assertEqual(False, self.drink1 in self.pub.drinks)
 
-    def test_get_id(self):
+    def test_get_id_young(self):
         self.customer_young = Customer("JP O'Reilly", [], 10.00, 17, 0)
-        self.customer_old = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 4)
         self.assertEqual (False, self.pub.get_id (self.customer_young))
+        
+    def test_get_id_old(self):
+        self.customer_old = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 4)
         self.assertEqual (True, self.pub.get_id (self.customer_old))
 
     def test_pub_can_sell_drink_old_alco(self):
