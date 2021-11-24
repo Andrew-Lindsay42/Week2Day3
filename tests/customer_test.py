@@ -31,4 +31,5 @@ class TestCustomer(unittest.TestCase):
         self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2])
         self.pub.sell_drink(self.customer, 'Whisky')
         self.assertEqual (5.00, (self.customer.drunkeness))
+        
 

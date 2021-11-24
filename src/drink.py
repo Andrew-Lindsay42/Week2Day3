@@ -4,3 +4,4 @@ class Drink:
         self.price = price
         self.alco_status = alco_status
         self.units = units
+        

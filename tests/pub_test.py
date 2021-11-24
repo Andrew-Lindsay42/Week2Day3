@@ -19,18 +19,17 @@ class TestPub(unittest.TestCase):
     def test_pub_has_till(self):
         self.assertEqual(100.00, self.pub.till)
     
-    def test_check_till_amount(self):
-        self.assertEqual(100.00, self.pub.check_till())
-
     def test_pub_has_drinks(self):
         self.assertEqual(3, len(self.pub.drinks))
-
-    def test_pub_drink_list(self):
-        self.assertEqual(self.pub.drinks, self.pub.drinks_list())
 
     def test_pub_finds_drink(self):
         self.assertEqual(self.drink2, self.pub.find_drink_by_name('Irn Bru'))
         self.assertEqual(None, self.pub.find_drink_by_name('Water'))
+
+    def test_pub_can_add_drink(self):
+        self.drink = Drink('Wine', 4.50, True, 2.00)
+        self.pub.add_drink(self.drink)
+        self.assertEqual(True, self.drink in self.pub.drinks)
 
     def test_pub_can_remove_drink(self):
         self.pub.remove_drink('Whisky')
@@ -82,6 +81,14 @@ class TestPub(unittest.TestCase):
         self.assertEqual(1.00, self.customer.wallet)
         self.assertEqual(100.00, self.pub.till)
         self.assertEqual(True, self.drink3 in self.pub.drinks)
+
+    def test_pub_can_sell_drink_doesnt_exist(self):
+        self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 4)
+        self.pub.sell_drink(self.customer, 'Water')
+        self.assertEqual(2, len(self.customer.stomach))
+        self.assertEqual(6.00, self.customer.wallet)
+        self.assertEqual(100.00, self.pub.till)
+        self.assertEqual(3, len(self.pub.drinks))
 
     def test_pub_can_sell_drink_too_drunk(self):
         self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 8.00)

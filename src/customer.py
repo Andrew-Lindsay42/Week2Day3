@@ -17,3 +17,4 @@ class Customer:
     
     def increase_drunkeness(self, drink):
         self.drunkeness += drink.units 
+        
