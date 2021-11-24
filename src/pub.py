@@ -1,13 +1,14 @@
 class Pub:
     
-    def __init__(self, name, till, drinks):
+    def __init__(self, name, till, drinks, foods):
         self.name = name
         self.till = till
         self.drinks = drinks
+        self.foods = foods
 
     def find_drink_by_name(self, name):
         for drink in self.drinks:
-            if name == drink.name:
+            if name.lower() == drink.name.lower():
                 return drink
 
     def add_drink(self, drink):
@@ -15,6 +16,17 @@ class Pub:
 
     def remove_drink(self, drink_name):
         self.drinks.remove(self.find_drink_by_name(drink_name))
+
+    def find_food_by_name(self, name):
+        for food in self.foods:
+            if name.lower() == food.name.lower():
+                return food
+
+    def add_food(self, food):
+        self.foods.append(food)
+
+    def remove_food(self, food_name):
+        self.foods.remove(self.find_food_by_name(food_name))
 
     def get_id(self, customer):
         if customer.age >= 18:
