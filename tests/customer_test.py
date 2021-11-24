@@ -8,7 +8,7 @@ class TestCustomer(unittest.TestCase):
     
     def setUp(self):
         self.drink1 = Drink('Whisky', 5.00, True, 1.00)
-        self.drink2 = Drink('espresso martini', 7.00, True, 3.00)
+        self.drink2 = Drink('Espresso Martini', 7.00, True, 3.00)
         self.customer = Customer("Stephen O'Reilly", [self.drink1, self.drink2], 6.00, 27, 4.00)
         
     def test_customer_has_name(self):
@@ -26,10 +26,9 @@ class TestCustomer(unittest.TestCase):
 
     def test_customer_get_drunkeness(self):
         self.assertEqual(4.00, self.customer.get_drunkeness())
-    
-    def test_increase_drunkeness(self):
-        self.pub = Pub('The Prancing Pony', 100.00, [self.drink1, self.drink2], [])
-        self.pub.sell_drink(self.customer, 'Whisky')
-        self.assertEqual (5.00, (self.customer.drunkeness))
 
+    def test_down_drink(self):
+        self.customer.down_drink(self.drink1)
+        self.assertEqual(5.00, self.customer.drunkeness)
+        self.assertEqual(3, len(self.customer.stomach))
 

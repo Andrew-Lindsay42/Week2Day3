@@ -39,13 +39,12 @@ class Pub:
         if drink is not None:
             if customer.can_afford(drink) and customer.get_drunkeness() < 8:
                 if self.get_id (customer):
-                    customer.increase_drunkeness(drink)
-                    customer.stomach.append(drink)
+                    customer.down_drink(drink)
                     customer.wallet -= drink.price
                     self.till += drink.price
                     self.drinks.remove(drink)
                 elif not drink.alco_status: 
-                    customer.stomach.append(drink)
+                    customer.down_drink(drink)
                     customer.wallet -= drink.price
                     self.till += drink.price
                     self.drinks.remove(drink)
