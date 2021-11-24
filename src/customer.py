@@ -6,12 +6,18 @@ class Customer:
         self.age = age
         self.drunkeness = drunkeness 
 
-    def can_afford(self, drink):
+    def can_afford_drink(self, drink):
         if self.wallet >= drink.price:
             return True 
         else:
              return False 
     
+    def can_afford_food(self, food):
+        if self.wallet >= food.price:
+            return True 
+        else:
+             return False 
+
     def get_drunkeness(self):
         return self.drunkeness 
 

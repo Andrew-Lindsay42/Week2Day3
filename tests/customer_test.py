@@ -21,9 +21,15 @@ class TestCustomer(unittest.TestCase):
     def test_customer_has_wallet(self):
         self.assertEqual(6.00, self.customer.wallet)
     
-    def test_customer_can_afford(self):
-        self.assertEqual(True, self.customer.can_afford(self.drink1))
-        self.assertEqual(False, self.customer.can_afford(self.drink2))
+    def test_customer_can_afford_drink(self):
+        self.assertEqual(True, self.customer.can_afford_drink(self.drink1))
+        self.assertEqual(False, self.customer.can_afford_drink(self.drink2))
+
+    def test_customer_can_afford_food(self):
+        self.food1 = Food("Crisps", 1.00, 0.5)
+        self.food2 = Food("Caviar", 15.00, 1)
+        self.assertEqual(True, self.customer.can_afford_food(self.food1))
+        self.assertEqual(False, self.customer.can_afford_food(self.food2))
 
     def test_customer_get_drunkeness(self):
         self.assertEqual(4.00, self.customer.get_drunkeness())
