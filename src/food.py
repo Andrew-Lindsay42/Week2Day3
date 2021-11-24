@@ -3,4 +3,3 @@ class Food:
         self.name = name
         self.price = price
         self.rejuvenation_level = rejuvenation_level
-        

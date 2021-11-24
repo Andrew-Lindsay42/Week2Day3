@@ -26,6 +26,7 @@ class Pub:
 
     def sell_drink(self, customer, drink_name):
         drink = self.find_drink_by_name(drink_name)
+
         if customer.can_afford(drink) and customer.get_drunkeness() < 8:
             if self.get_id (customer):
                 customer.increase_drunkeness(drink)
@@ -33,9 +34,13 @@ class Pub:
                 customer.wallet -= drink.price
                 self.till += drink.price
                 self.drinks.remove(drink)
-            elif not drink.alco_status: #alternatively use elif drink.alco_status == False
+            elif not drink.alco_status: 
                 customer.stomach.append(drink)
                 customer.wallet -= drink.price
                 self.till += drink.price
                 self.drinks.remove(drink)
         
+    def sell_food(self, customer, food):
+        customer.wallet -= food.price
+        customer.drunkeness -= food.rejuvenation_level
+        self.till += food.price
